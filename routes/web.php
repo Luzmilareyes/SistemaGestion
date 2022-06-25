@@ -26,7 +26,9 @@ Route::get('eventos/crear',[EventoController::class, "crear"]);
 Route::get('eventos/actualizar',[EventoController::class, "actualizar"]);
 Route::get('eventos/eliminar',[EventoController::class, "mostrar"]);
 
-Route::get('establecimientos/crear',[EstablecimientoController::class, "crear"]);
+
+Route::get('establecimientos',[EstablecimientoController::class, "crear"]);
+Route::get('establecimientos/crear',[EstablecimientoController::class, "crear"])->name("establecimientos.create");
 Route::get('establecimientos/actualizar',[EstablecimientoController::class, "actualizar"]);
 Route::get('establecimientos/eliminar',[EstablecimientoController::class, "eliminar"]);
 
@@ -36,3 +38,6 @@ Route::get('servicio/crear',[ServicioController::class, "crear"]);
 Route::get('servicio/mostrar',[ServicioController::class, "mostrar"]);
 Route::get('servicio/actualizar',[ServicioController::class, "actualizar"]);
 Route::get('servicio/eliminar',[ServicioController::class, "eliminar"]);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

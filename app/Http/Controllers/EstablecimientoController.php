@@ -14,7 +14,11 @@ class EstablecimientoController extends Controller
      */
     public function index()
     {
-        //
+        $establecimiento = new Establecimiento();
+        $resultado = $establecimiento::get();
+        return view('establecimiento.mostrar')
+        ->with("establecimientos", $resultado);
+
     }
 
     /**
@@ -22,9 +26,19 @@ class EstablecimientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $establecimiento = new Establecimiento();
+        $resultado = $establecimiento::get();
+        return view('establecimientos.create');
+
+        $establecimiento->nombre = $request->nombre;
+        $establecimiento->calificacion = $request->calificacion;
+        $establecimiento->direccion = $request->direccion;
+        $establecimiento->descripcion = $request->descripcion;
+
+        $establecimiento->save();
+        return redirect(Route("establecimientos.index"));
     }
 
     /**
@@ -35,7 +49,7 @@ class EstablecimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -55,9 +69,10 @@ class EstablecimientoController extends Controller
      * @param  \App\Models\Establecimiento  $establecimiento
      * @return \Illuminate\Http\Response
      */
-    public function edit(Establecimiento $establecimiento)
+    public function edit($id)
     {
-        //
+        $resultado = Establecimiento::find($id);
+        return view('establecimiento.editar', ["establecimiento"=>$resultado]);
     }
 
     /**
