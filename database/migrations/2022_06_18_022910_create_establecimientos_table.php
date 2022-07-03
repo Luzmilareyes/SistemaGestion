@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('descripcion');
            
-            $table->foreignId("id_serviciosx")->constrained("servicios")->references('id_servicio');
-            $table->foreignId("id_propietarios")->constrained("propietarioestablecimientos")->references('id_propietario');
+           /* $table->foreignId("id_serviciosx")->constrained("servicios")->references('id_servicio');
+            $table->foreignId("id_propietarios")->constrained("propietarioestablecimientos")->references('id_propietario');*/
         });
     }
 

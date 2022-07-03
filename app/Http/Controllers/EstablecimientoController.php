@@ -14,10 +14,10 @@ class EstablecimientoController extends Controller
      */
     public function index()
     {
-        $establecimiento = new Establecimiento();
-        $resultado = $establecimiento::get();
-        return view('establecimiento.mostrar')
-        ->with("establecimientos", $resultado);
+        $establecimientos = Establecimiento::all();
+        
+        return view('establecimientos.index', compact('establecimientos'));
+
 
     }
 
@@ -30,7 +30,7 @@ class EstablecimientoController extends Controller
     {
         $establecimiento = new Establecimiento();
         $resultado = $establecimiento::get();
-        return view('establecimientos.create');
+        return view('establecimientos.crear');
 
         $establecimiento->nombre = $request->nombre;
         $establecimiento->calificacion = $request->calificacion;
@@ -38,6 +38,19 @@ class EstablecimientoController extends Controller
         $establecimiento->descripcion = $request->descripcion;
 
         $establecimiento->save();
+        return redirect(Route("establecimientos.index"));
+    }
+
+    public function createPost (Request $request)
+    {
+        $establecimiento = new Establecimiento();
+        $establecimiento->nombre = $request->nombre;
+        $establecimiento->calificacion = $request->calificacion;
+        $establecimiento->direccion = $request->direccion;
+        $establecimiento->descripcion = $request->descripcion;
+
+        $establecimiento->save();
+      
         return redirect(Route("establecimientos.index"));
     }
 

@@ -5,6 +5,7 @@ Use App\Http\Controllers\EventoController;
 Use App\Http\Controllers\EstablecimientoController;
 Use App\Http\Controllers\CiudadController;
 Use App\Http\Controllers\ServicioController;
+Use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ Use App\Http\Controllers\ServicioController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route("home"));
 });
 
 Route::get('eventos/mostrar',[EventoController::class, "mostrar"]);
@@ -28,7 +29,11 @@ Route::get('eventos/eliminar',[EventoController::class, "mostrar"]);
 
 
 Route::get('establecimientos',[EstablecimientoController::class, "crear"]);
-Route::get('establecimientos/crear',[EstablecimientoController::class, "crear"])->name("establecimientos.create");
+Route::get('establecimientos/crear',[EstablecimientoController::class, "create"])->name("establecimientos.create");
+Route::post('establecimientos/crear',[EstablecimientoController::class, "createPost"])->name("establecimientos.create");
+Route::get('establecimientos/index',[EstablecimientoController::class, "index"] )->name("establecimientos.index");
+
+
 Route::get('establecimientos/actualizar',[EstablecimientoController::class, "actualizar"]);
 Route::get('establecimientos/eliminar',[EstablecimientoController::class, "eliminar"]);
 
@@ -41,3 +46,8 @@ Route::get('servicio/eliminar',[ServicioController::class, "eliminar"]);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/login2', [AuthController::class, 'login2'])->name('login2');
+
+
+
