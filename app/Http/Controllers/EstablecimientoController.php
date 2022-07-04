@@ -44,6 +44,7 @@ class EstablecimientoController extends Controller
     public function createPost (Request $request)
     {
         $establecimiento = new Establecimiento();
+        $establecimiento->ciudad = $request->ciudad;
         $establecimiento->nombre = $request->nombre;
         $establecimiento->calificacion = $request->calificacion;
         $establecimiento->direccion = $request->direccion;
@@ -51,7 +52,7 @@ class EstablecimientoController extends Controller
 
         $establecimiento->save();
       
-        return redirect(Route("establecimientos.index"));
+        return view('establecimientos.crear');
     }
 
     /**

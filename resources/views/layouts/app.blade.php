@@ -43,7 +43,7 @@
                             
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Destinos') }}</a>
+                                    <a class="nav-link" href="{{ route('establecimientos.index') }}">{{ __('Destinos') }}</a>
                                 </li>
                             @endif
 
@@ -88,5 +88,9 @@
             @yield('content')
         </main>
     </div>
+
+
+
+
 </body>
 </html>

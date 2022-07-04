@@ -3,8 +3,9 @@
 @section("content")
 <h1>Destinos turisticos</h1>
 
-<table class="table table-striped">
+<table class="table table-striped table-bordered table-hover table-responsive">
 <tr>
+<td>Ciudad</td>
 <td>Nombre</td>
 <td>Calificación</td>
 <td>Dirección</td>
@@ -13,6 +14,7 @@
 
 @foreach ($establecimientos as $e )
 <tr>
+<td>{{$e->ciudad}}</td>
 <td>{{$e->nombre}}</td>
 <td>{{$e->calificacion}}</td>
 <td>{{$e->direccion}}</td>

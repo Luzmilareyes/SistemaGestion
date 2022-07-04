@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ciudad;
 use Illuminate\Http\Request;
 
+
 class CiudadController extends Controller
 {
     /**
@@ -22,9 +23,30 @@ class CiudadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+ 
+
+    public function create(Request $request)
     {
-        //
+        $ciudad = new ciudad();
+        $resultado = $ciudad::get();
+        return view('ciudads.crear');
+
+        $ciudad->nombre = $request->nombre;
+      
+
+        $ciudad->save();
+        return redirect(Route("ciudades.index"));
+    }
+
+    public function createPost (Request $request)
+    {
+        $ciudad = new Ciudad();
+        $ciudad->nombre = $request->nombre;
+      
+
+        $ciudad->save();
+      
+        return redirect(Route("ciudades.index"));
     }
 
     /**
