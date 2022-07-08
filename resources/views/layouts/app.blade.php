@@ -49,7 +49,7 @@
 
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Alojamientos') }}</a>
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('home') }}</a>
                                 </li>
                             @endif
 

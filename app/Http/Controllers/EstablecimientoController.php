@@ -31,7 +31,8 @@ class EstablecimientoController extends Controller
         $establecimiento = new Establecimiento();
         $resultado = $establecimiento::get();
         return view('establecimientos.crear');
-
+        
+        $establecimiento->ciudad = $request->ciudad;
         $establecimiento->nombre = $request->nombre;
         $establecimiento->calificacion = $request->calificacion;
         $establecimiento->direccion = $request->direccion;

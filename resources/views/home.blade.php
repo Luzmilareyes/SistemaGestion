@@ -20,7 +20,7 @@
                     
                     @if (Route::has('login'))
                                 
-                    <a class="nav-link" href="{{ route('establecimientos.create') }}">{{ __('Crear un evento nuevo') }}</a>
+                    <a class="nav-link" href="{{ route('eventos.create') }}">{{ __('Crear un evento nuevo') }}</a>
                             
                      @endif
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 
+
 class EventoController extends Controller
 {
     /**
@@ -27,27 +28,33 @@ class EventoController extends Controller
     public function create(Request $request)
     {
         $evento = new Evento();
-        $evento->lugar = $request->input('lugar');
-        $evento->fecha = $request->input('fecha');
-        $evento->modalidad = $request->input('modalidad');
-        $evento->motivo = $request->input('motivo');
-        $evento->hora_inicio = $request->input('hora_inicio');
-        $evento->hora_fin = $request->input('hora_fin');
+        $resultado = $evento::get();
+        return view('eventos.crear');
+
+        $evento->lugar = $request->lugar;
+        $evento->fecha = $request->fecha;
+        $evento->modalidad = $request->modalidad;
+        $evento->motivo = $request->motivo;
+        $evento->hora_inicio = $request->hora_inicio;
+        $evento->hora_fin = $request->hora_fin;
         $evento->save();
-        return "El evento se ha creado satisfactoriamente";
+    
+        return redirect(Route("eventos.index"));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function mostrar(Request $request)
+    public function createEv (Request $request)
     {
-        $eventos = Evento::all();
-        return view('evento.mostrar')->with('eventos', $eventos);
+        $evento = new Evento();
+        $evento->lugar = $request->lugar;
+        $evento->fecha = $request->fecha;
+        $evento->modalidad = $request->modalidad;
+        $evento->motivo = $request->motivo;
+        $evento->hora_inicio = $request->hora_inicio;
+        $evento->hora_fin = $request->hora_fin;
 
+        $evento->save();
+      
+        return view('eventos.crear');
     }
 
     /**
@@ -61,12 +68,7 @@ class EventoController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Evento  $evento
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function edit(Evento $evento)
     {
         //

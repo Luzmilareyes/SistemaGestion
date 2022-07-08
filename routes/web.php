@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-Use App\Http\Controllers\EventoController;
 Use App\Http\Controllers\EstablecimientoController;
 Use App\Http\Controllers\CiudadController;
 Use App\Http\Controllers\ServicioController;
 Use App\Http\Controllers\AuthController;
+Use App\Http\Controllers\EventoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +32,10 @@ Route::get('establecimientos',[EstablecimientoController::class, "crear"]);
 Route::get('establecimientos/crear',[EstablecimientoController::class, "create"])->name("establecimientos.create");
 Route::post('establecimientos/crear',[EstablecimientoController::class, "createPost"])->name("establecimientos.create");
 Route::get('establecimientos/index',[EstablecimientoController::class, "index"] )->name("establecimientos.index");
+
+Route::get('eventos/crear',[EventoController::class, "create"])->name("eventos.create");
+Route::post('eventos/crear',[EventoController::class, "createPost"])->name("eventos.create");
+Route::get('eventos/index',[EventoController::class, "index"] )->name("eventos.index");
 
 
 Route::get('establecimientos/actualizar',[EstablecimientoController::class, "actualizar"]);
